@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 2rem;
+}
+
+.profile-card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.profile-card h1 {
+  margin-bottom: 0.25rem;
+}
+
+.profile-card h2 {
+  margin-top: 0;
+  color: #555;
+}
+
+.profile-card ul {
+  padding-left: 1.5rem;
+}
