@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milestone 70 - Refactor Rend Functions</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="skill-card">
+        <h1>Refactor Rend Functions</h1>
+
+        <form id="skill-form">
+          <label id="skill-label" for="skill-input">New skill</label>
+          <input id="skill-input" type="text" />
+
+          <div class="form-actions">
+            <button id="submit-button" type="submit">Add Skill</button>
+
+            <button id="cancel-edit-button" type="button" hidden>
+              Cancel Edit
+            </button>
+          </div>
+        </form>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+
+        <section class="summary-card">
+          <h2>Summary</h2>
+          <p id="total-count">Total: 0</p>
+          <p id="complete-count">Complete: 0</p>
+          <p id="in-progress-count">In Progress: 0</p>
+        </section>
+
+        <div class="controls">
+          <label for="search-input">Search skills</label>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search by name..."
+          />
+
+          <label for="sort-select">Sort skills</label>
+          <select id="sort-select">
+            <option value="name-asc">Name A-Z</option>
+            <option value="name-desc">Name Z-A</option>
+            <option value="complete-first">Complete First</option>
+            <option value="in-progress-first">In Progress First</option>
+          </select>
+
+          <div class="filter-row">
+            <button class="filter-button" data-filter="all">All</button>
+            <button class="filter-button" data-filter="complete">
+              Complete
+            </button>
+            <button class="filter-button" data-filter="in-progress">
+              In Progress
+            </button>
+          </div>
+        </div>
+
+        <div id="skill-container"></div>
+
+        <button id="reset-button" type="button">Reset App</button>
+      </section>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
