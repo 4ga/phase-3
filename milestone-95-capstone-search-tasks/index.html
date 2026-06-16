@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phase 3 Capstone - Project Task Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="task-card">
+        <h1>Project Task Tracker</h1>
+
+        <form id="task-form">
+          <label for="task-input" id="task-label">New Task</label>
+          <input type="text" id="task-input" placeholder="Enter a task..." />
+
+          <label for="priority-select">Priority</label>
+          <select id="priority-select">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+
+          <div class="form-actions">
+            <button id="submit-button" type="submit">Add Task</button>
+            <button id="cancel-edit-button" type="button" hidden>
+              Cancel Edit
+            </button>
+          </div>
+        </form>
+
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+        <output id="app-status" class="app-status" aria-live="polite"></output>
+      </section>
+
+      <section class="summary-card">
+        <h2>Summary</h2>
+        <p id="total-count">Total: 0</p>
+        <p id="complete-count">Complete: 0</p>
+        <p id="in-progress-count">In Progress: 0</p>
+
+        <div class="controls">
+          <label for="search-input">Search tasks</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by title..."
+          />
+
+          <label for="sort-select">Sort tasks</label>
+          <select id="sort-select">
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+            <option value="high-priority-first">High Priority First</option>
+            <option value="low-priority-first">Low Priority First</option>
+          </select>
+
+          <div class="filter-row">
+            <button class="filter-button" type="button" data-filter="all">
+              All
+            </button>
+            <button class="filter-button" type="button" data-filter="complete">
+              Complete
+            </button>
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="in-progress"
+            >
+              In Progress
+            </button>
+          </div>
+        </div>
+
+        <div id="task-container"></div>
+
+        <button id="reset-button" type="button">Reset App</button>
+      </section>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
