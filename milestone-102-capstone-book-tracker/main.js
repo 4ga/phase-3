@@ -7,6 +7,7 @@ import {
   cancelEditBook,
   setBookFilters,
   resetState,
+  setSearchTerm,
 } from "./actions.js";
 import {
   clearAppStatus,
@@ -206,7 +207,38 @@ function handleResetClick() {
   handleActionResult(result);
 }
 
+function handleBookFormKeyDown(event) {
+  if (event.key !== "Escape") {
+    return;
+  }
+
+  if (!isEditingBook()) {
+    return;
+  }
+  const result = cancelEditBook();
+  if (result.success) {
+    resetBookForm();
+    clearFormMessage();
+  }
+
+  handleActionResult(result);
+}
+
+function handleSearchKeyDown(event) {
+  if (event.key !== "Escape") {
+    return;
+  }
+  if (state.searchTerm === "") {
+    return;
+  }
+  setSearchTerm("");
+  clearFormMessage();
+  showAppStatus("Search cleared.");
+}
+
 bookForm.addEventListener("submit", handleSubmit);
+bookForm.addEventListener("keydown", handleBookFormKeyDown);
+
 bookTitle.addEventListener("input", handleBookInput);
 booksContainer.addEventListener("click", handleBookContainerClick);
 cancelEditButton.addEventListener("click", handleCancelEdit);
@@ -231,6 +263,7 @@ availabilityFilter.addEventListener("change", () => {
 searchInput.addEventListener("input", () =>
   handleSearchTerm(searchInput.value),
 );
+searchInput.addEventListener("keydown", handleSearchKeyDown);
 
 loadState();
 renderApp();
