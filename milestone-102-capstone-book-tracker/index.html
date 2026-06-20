@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Book Tracker</h1>
+    </header>
+    <main class="app">
+      <section class="book-card">
+        <h2>Book details</h2>
+        <form id="book-form">
+          <label for="book-title" id="book-label">New Book</label>
+          <input
+            required
+            type="text"
+            id="book-title"
+            placeholder="Enter a title..."
+          />
+
+          <label for="book-author" id="book-author-label">Author</label>
+          <input
+            required
+            type="text"
+            id="book-author"
+            placeholder="Enter an author"
+          />
+
+          <label for="book-pub-year" id="book-year-label"
+            >Publication Year</label
+          >
+          <input
+            required
+            type="number"
+            id="book-pub-year"
+            placeholder="Enter publication year"
+          />
+
+          <label for="genre-select">Genre</label>
+          <select required id="genre-select">
+            <option value="">Select a genre</option>
+            <option value="fiction">Fiction</option>
+            <option value="sci-fi-fantasy">Sci-Fi & Fantasy</option>
+            <option value="mystery-thriller">Mystery & Thriller</option>
+            <option value="biography-history">Biography & History</option>
+            <option value="information-science">Information & Science</option>
+            <option value="childrens-picture-book">
+              Children's / Picture Books
+            </option>
+          </select>
+
+          <label for="format-select">Format</label>
+          <select required id="format-select">
+            <option value="">Select a format</option>
+            <option value="book">Book</option>
+            <option value="e-book">E-Book</option>
+            <option value="audiobook">Audiobook</option>
+            <option value="video">Video</option>
+          </select>
+
+          <label for="audience-select">Audience</label>
+          <select required id="audience-select">
+            <option value="">Select an audience</option>
+            <option value="adult">Adult</option>
+            <option value="young-adult">Young Adult</option>
+            <option value="children">Children</option>
+          </select>
+
+          <label for="available-select">Availability</label>
+          <select required id="available-select">
+            <option value="">Select an availability</option>
+            <option value="available">Available</option>
+            <option value="checked-out">Checked Out</option>
+            <option value="on-hold">On Hold</option>
+          </select>
+
+          <div class="form-actions">
+            <button id="submit-button" type="submit">Add Book</button>
+            <button id="edit-cancel-button" type="button" hidden>
+              Cancel Edit
+            </button>
+          </div>
+        </form>
+
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+        <output id="app-status" class="app-status" aria-live="polite"></output>
+      </section>
+
+      <section class="summary-card">
+        <h2>Summary</h2>
+        <p id="total-count">Total: 0</p>
+        <p id="filtered-count">Filtered: 0</p>
+
+        <div class="controls">
+          <label for="search-input">Search books</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by title or author..."
+          />
+
+          <label for="sort-select">Sort books</label>
+          <select id="sort-select">
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+            <option value="author-asc">Author A-Z</option>
+            <option value="author-desc">Author Z-A</option>
+            <option value="year-asc">Year: Oldest to Newest</option>
+            <option value="year-desc">Year: Newest to Oldest</option>
+          </select>
+
+          <div class="filter-controls">
+            <label for="genre-filter">Filter by genre</label>
+            <select id="genre-filter">
+              <option value="all">All genres</option>
+              <option value="fiction">Fiction</option>
+              <option value="sci-fi-fantasy">Sci-Fi & Fantasy</option>
+              <option value="mystery-thriller">Mystery & Thriller</option>
+              <option value="biography-history">Biography & History</option>
+              <option value="information-science">Information & Science</option>
+              <option value="childrens-picture-book">
+                Children's / Picture Books
+              </option>
+            </select>
+
+            <label for="format-filter">Filter by format</label>
+            <select id="format-filter">
+              <option value="all">All formats</option>
+              <option value="book">Book</option>
+              <option value="e-book">E-Book</option>
+              <option value="audiobook">Audiobook</option>
+              <option value="video">Video</option>
+            </select>
+
+            <label for="audience-filter">Filter by audience</label>
+            <select id="audience-filter">
+              <option value="all">All audiences</option>
+              <option value="adult">Adult</option>
+              <option value="young-adult">Young Adult</option>
+              <option value="children">Children</option>
+            </select>
+
+            <label for="availability-filter">Filter by availability</label>
+            <select id="availability-filter">
+              <option value="all">All availability</option>
+              <option value="available">Available</option>
+              <option value="checked-out">Checked Out</option>
+              <option value="on-hold">On Hold</option>
+            </select>
+          </div>
+        </div>
+        <div id="books-container"></div>
+
+        <button id="reset-button" type="button">Reset App</button>
+      </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
