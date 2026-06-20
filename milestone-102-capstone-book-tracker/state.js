@@ -106,7 +106,7 @@ export const state = {
   editingBookId: null,
 };
 
-export function resetState() {
+export function resetAppState() {
   state.books = createDefaultBooks();
   state.searchTerm = "";
   state.sortBy = SORTS.TITLE_ASC;

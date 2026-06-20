@@ -6,6 +6,7 @@ import {
   updateBook,
   cancelEditBook,
   setBookFilters,
+  resetState,
 } from "./actions.js";
 import {
   clearFormMessage,
@@ -30,6 +31,7 @@ import {
   audienceFilter,
   searchInput,
   sortSelect,
+  resetButton,
 } from "./dom.js";
 import {
   handleValidateBookAuthor,
@@ -196,6 +198,7 @@ bookForm.addEventListener("submit", handleSubmit);
 bookTitle.addEventListener("input", handleBookInput);
 booksContainer.addEventListener("click", handleBookContainerClick);
 cancelEditButton.addEventListener("click", handleCancelEdit);
+resetButton.addEventListener("click", resetState);
 
 formatFilter.addEventListener("change", () => {
   setBookFilters({ format: formatFilter.value });

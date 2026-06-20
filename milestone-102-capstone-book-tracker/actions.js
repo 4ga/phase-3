@@ -1,4 +1,4 @@
-import { state } from "./state.js";
+import { resetAppState, state } from "./state.js";
 import { renderApp } from "./render.js";
 import {
   saveState,
@@ -7,6 +7,7 @@ import {
   isValidAvailability,
   isValidFormat,
   isValidGenre,
+  clearSavedState,
 } from "./storage.js";
 
 function addBook(book) {
@@ -170,6 +171,28 @@ function setBookFilters(filter) {
   };
 }
 
+function resetState() {
+  const confirmed = globalThis.window.confirm(
+    "Reset the app? This will remove all saved tasks and restore the defaults.",
+  );
+
+  if (!confirmed) {
+    return {
+      success: false,
+      message: "Reset canceled.",
+    };
+  }
+
+  resetAppState();
+  clearSavedState();
+  renderApp();
+
+  return {
+    success: true,
+    message: "App reset to defaults.",
+  };
+}
+
 export {
   addBook,
   deleteBook,
@@ -179,4 +202,5 @@ export {
   setBookSort,
   setSearchTerm,
   setBookFilters,
+  resetState,
 };
