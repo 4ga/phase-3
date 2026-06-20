@@ -1,5 +1,9 @@
 import { AUDIENCE, AVAILABILITY, FORMAT, GENRE, SORTS } from "./constants.js";
 
+export function createBookId() {
+  return crypto.randomUUID();
+}
+
 export function createDefaultBooks() {
   return [
     {

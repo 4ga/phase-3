@@ -17,37 +17,46 @@ function renderSummary() {
 }
 
 function getVisibleBooks() {
-  return state.books
-    .filter((book) => {
-      const searchTerm = state.searchTerm.toLowerCase();
+  let visibleBooks = [...state.books];
 
+  const searchTerm = state.searchTerm.trim().toLowerCase();
+
+  if (searchTerm !== "") {
+    visibleBooks = visibleBooks.filter((book) => {
       return (
         book.title.toLowerCase().includes(searchTerm) ||
         book.author.toLowerCase().includes(searchTerm)
       );
-    })
-    .filter((book) => {
-      return (
-        state.filters.genre === "all" || book.genre === state.filters.genre
-      );
-    })
-    .filter((book) => {
-      return (
-        state.filters.format === "all" || book.format === state.filters.format
-      );
-    })
-    .filter((book) => {
-      return (
-        state.filters.audience === "all" ||
-        book.audience === state.filters.audience
-      );
-    })
-    .filter((book) => {
-      return (
-        state.filters.availability === "all" ||
-        book.availability === state.filters.availability
-      );
     });
+  }
+
+  if (state.filters.genre !== "all") {
+    visibleBooks = visibleBooks.filter(
+      (book) => book.genre === state.filters.genre,
+    );
+  }
+
+  if (state.filters.audience !== "all") {
+    visibleBooks = visibleBooks.filter(
+      (book) => book.audience === state.filters.audience,
+    );
+  }
+
+  if (state.filters.availability !== "all") {
+    visibleBooks = visibleBooks.filter(
+      (book) => book.availability === state.filters.availability,
+    );
+  }
+
+  if (state.filters.format !== "all") {
+    visibleBooks = visibleBooks.filter(
+      (book) => book.format === state.filters.format,
+    );
+  }
+
+  visibleBooks = sortBooks(visibleBooks, state.sortBy);
+
+  return visibleBooks;
 }
 
 function sortBooks(books) {

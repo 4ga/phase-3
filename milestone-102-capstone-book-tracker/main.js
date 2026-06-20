@@ -1,10 +1,11 @@
-import { state } from "./state.js";
+import { createBookId, state } from "./state.js";
 import {
   addBook,
   deleteBook,
   startEditBook,
   updateBook,
   cancelEditBook,
+  setSearchTerm,
 } from "./actions.js";
 import {
   clearFormMessage,
@@ -39,6 +40,7 @@ import {
   handleValidateGenre,
   handleValidateAvailability,
 } from "./validation.js";
+import { loadState } from "./storage.js";
 
 function handleValidationResult(result) {
   if (result.success) {
@@ -98,13 +100,16 @@ function handleSubmit(event) {
   if (!handleValidationResult(handleValidateAvailability(availability))) return;
 
   const book = {
+    id: createBookId(),
     title,
     author,
     publicationYear,
-    format,
-    genre,
-    audience,
-    availability,
+    filters: {
+      genre,
+      format,
+      audience,
+      availability,
+    },
   };
 
   if (isEditingBook()) {
@@ -219,4 +224,5 @@ searchInput.addEventListener("input", () =>
 
 sortSelect.addEventListener("change", () => handleSortChange(sortSelect.value));
 
+loadState();
 renderApp();
