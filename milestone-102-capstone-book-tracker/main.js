@@ -9,6 +9,7 @@ import {
   resetState,
 } from "./actions.js";
 import {
+  clearAppStatus,
   clearFormMessage,
   renderApp,
   showAppStatus,
@@ -194,12 +195,23 @@ function handleSearchTerm(value) {
   renderApp();
 }
 
+function handleResetClick() {
+  const result = resetState();
+
+  if (result.success) {
+    resetBookForm();
+    clearFormMessage();
+    clearAppStatus();
+  }
+  handleActionResult(result);
+}
+
 bookForm.addEventListener("submit", handleSubmit);
 bookTitle.addEventListener("input", handleBookInput);
 booksContainer.addEventListener("click", handleBookContainerClick);
 cancelEditButton.addEventListener("click", handleCancelEdit);
-resetButton.addEventListener("click", resetState);
-
+resetButton.addEventListener("click", handleResetClick);
+sortSelect.addEventListener("change", () => handleSortChange(sortSelect.value));
 formatFilter.addEventListener("change", () => {
   setBookFilters({ format: formatFilter.value });
 });
@@ -219,8 +231,6 @@ availabilityFilter.addEventListener("change", () => {
 searchInput.addEventListener("input", () =>
   handleSearchTerm(searchInput.value),
 );
-
-sortSelect.addEventListener("change", () => handleSortChange(sortSelect.value));
 
 loadState();
 renderApp();
