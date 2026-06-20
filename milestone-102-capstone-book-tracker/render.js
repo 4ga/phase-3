@@ -89,19 +89,28 @@ function createBookItem(book) {
   author.textContent = `${book.author}`;
   author.classList.add("book-author");
 
+  const publicationYear = document.createElement("span");
+  publicationYear.textContent = book.publicationYear;
+  publicationYear.classList.add("publication-year");
+
+  const actions = document.createElement("div");
+  actions.classList.add("book-actions");
+
   const editButton = document.createElement("button");
+  editButton.type = "button";
   editButton.textContent = "Edit";
   editButton.dataset.action = "edit";
-  editButton.dataset.id = String(book.id);
-  editButton.setAttribute("aria-label", `Edit ${book.title}`);
+  editButton.dataset.id = book.id;
 
   const deleteButton = document.createElement("button");
+  deleteButton.type = "button";
   deleteButton.textContent = "Delete";
   deleteButton.dataset.action = "delete";
-  deleteButton.dataset.id = String(book.id);
-  deleteButton.setAttribute("aria-label", `Delete ${book.title}`);
+  deleteButton.dataset.id = book.id;
 
-  bookItem.append(title, author, editButton, deleteButton);
+  actions.append(editButton, deleteButton);
+
+  bookItem.append(title, author, publicationYear, actions);
 
   return bookItem;
 }

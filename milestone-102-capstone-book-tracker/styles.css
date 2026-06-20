@@ -233,7 +233,13 @@ button:active {
 
 .book-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(0, 1.5fr)
+    90px
+    auto
+    auto;
+  align-items: center;
   gap: 0.75rem;
 
   padding: 0.75rem;
@@ -251,23 +257,43 @@ button:active {
   overflow-wrap: anywhere;
   word-break: normal;
 }
+.book-actions button {
+  margin: 0 10px 0;
+}
 
 .book-item button {
-  padding: 0.4rem 0.4rem;
+  width: auto;
+  justify-self: end;
+
+  padding: 0.4rem 0.6rem;
   font-size: 0.75rem;
   line-height: 1.1;
 
   border: 1px solid #bbb;
   border-radius: 4px;
-  background-color: #ffff;
+  background-color: #fff;
   color: #333;
 
   cursor: pointer;
   white-space: nowrap;
+  box-shadow: none;
 }
 
 .book-actions button:hover {
   background-color: #e0e0e0;
+}
+
+/* Book list */
+
+section.books-container {
+  display: grid;
+  grid-column: 1 / -1;
+  background-color: #ffff;
+}
+
+section.books-container h2 {
+  text-align: center;
+  margin-top: 20px;
 }
 /* Filter buttons */
 
@@ -302,7 +328,6 @@ button:active {
 }
 
 #books-container {
-  margin-top: 20px;
   max-height: 250px;
   overflow-y: scroll;
 }
@@ -369,7 +394,8 @@ button:active {
     grid-template-columns: 1fr;
     grid-template-areas:
       "book"
-      "summary";
+      "summary"
+      "list";
   }
 
   .book-card,
