@@ -5,7 +5,7 @@ import {
   startEditBook,
   updateBook,
   cancelEditBook,
-  setSearchTerm,
+  setBookFilters,
 } from "./actions.js";
 import {
   clearFormMessage,
@@ -192,30 +192,25 @@ function handleSearchTerm(value) {
   renderApp();
 }
 
-function handleFilterChange(filterName, value) {
-  state.filters[filterName] = value;
-  renderApp();
-}
-
 bookForm.addEventListener("submit", handleSubmit);
 bookTitle.addEventListener("input", handleBookInput);
 booksContainer.addEventListener("click", handleBookContainerClick);
 cancelEditButton.addEventListener("click", handleCancelEdit);
 
 formatFilter.addEventListener("change", () => {
-  handleFilterChange("format", formatFilter.value);
+  setBookFilters({ format: formatFilter.value });
 });
 
 genreFilter.addEventListener("change", () => {
-  handleFilterChange("genre", genreFilter.value);
+  setBookFilters({ genre: genreFilter.value });
 });
 
 audienceFilter.addEventListener("change", () => {
-  handleFilterChange("audience", audienceFilter.value);
+  setBookFilters({ audience: audienceFilter.value });
 });
 
 availabilityFilter.addEventListener("change", () => {
-  handleFilterChange("availability", availabilityFilter.value);
+  setBookFilters({ availability: availabilityFilter.value });
 });
 
 searchInput.addEventListener("input", () =>

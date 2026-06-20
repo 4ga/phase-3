@@ -9,6 +9,10 @@ import {
   submitButton,
   cancelEditButton,
   filteredCount,
+  genreFilter,
+  audienceFilter,
+  availabilityFilter,
+  formatFilter,
 } from "./dom.js";
 
 function renderSummary() {
@@ -152,6 +156,23 @@ function renderBookList() {
   booksContainer.append(bookList);
 }
 
+function syncFilterControls() {
+  if (genreFilter) {
+    genreFilter.value = state.filters.genre;
+  }
+
+  if (audienceFilter) {
+    audienceFilter.value = state.filters.audience;
+  }
+
+  if (availabilityFilter) {
+    availabilityFilter.value = state.filters.availability;
+  }
+  if (formatFilter) {
+    formatFilter.value = state.filters.format;
+  }
+}
+
 function renderFormState() {
   const isEditing = state.editingBookId !== null;
 
@@ -182,6 +203,7 @@ function renderApp() {
   renderFormState();
   renderSummary();
   renderBookList();
+  syncFilterControls();
 }
 
 export {

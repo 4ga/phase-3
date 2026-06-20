@@ -140,7 +140,7 @@ function setSearchTerm(searchTerm) {
 function setBookFilters(filter) {
   const nextFilters = {
     ...state.filters,
-    ...filters,
+    ...filter,
   };
 
   if (!isValidGenre(nextFilters.genre)) {
