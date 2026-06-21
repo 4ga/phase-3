@@ -13,6 +13,8 @@ import {
   audienceFilter,
   availabilityFilter,
   formatFilter,
+  searchInput,
+  sortSelect,
 } from "./dom.js";
 
 function renderSummary() {
@@ -173,6 +175,20 @@ function syncFilterControls() {
   }
 }
 
+function syncSearchControl() {
+  if (!searchInput) {
+    return;
+  }
+  searchInput.value = state.searchTerm;
+}
+
+function syncSortControl() {
+  if (!sortSelect) {
+    return;
+  }
+  sortSelect.value = state.sortBy;
+}
+
 function renderFormState() {
   const isEditing = state.editingBookId !== null;
 
@@ -204,6 +220,8 @@ function renderApp() {
   renderSummary();
   renderBookList();
   syncFilterControls();
+  syncSearchControl();
+  syncSortControl();
 }
 
 export {

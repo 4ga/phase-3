@@ -8,6 +8,7 @@ import {
   setBookFilters,
   resetState,
   setSearchTerm,
+  setBookSort,
 } from "./actions.js";
 import {
   clearAppStatus,
@@ -243,7 +244,7 @@ bookTitle.addEventListener("input", handleBookInput);
 booksContainer.addEventListener("click", handleBookContainerClick);
 cancelEditButton.addEventListener("click", handleCancelEdit);
 resetButton.addEventListener("click", handleResetClick);
-sortSelect.addEventListener("change", () => handleSortChange(sortSelect.value));
+sortSelect.addEventListener("change", () => setBookSort(sortSelect.value));
 formatFilter.addEventListener("change", () => {
   setBookFilters({ format: formatFilter.value });
 });
