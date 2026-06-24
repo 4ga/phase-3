@@ -60,7 +60,7 @@ function getVisibleBooks() {
     );
   }
 
-  visibleBooks = sortBooks(visibleBooks, state.sortBy);
+  visibleBooks = sortBooks(visibleBooks);
 
   return visibleBooks;
 }
